@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import './Product.css'
 const Product = (  props ) => {
     const { img, name, price, seller, stock, key } = props.product;
-
+    const {showAddBtn} = props;
 
     return (
         <div className="product">
@@ -17,9 +17,11 @@ const Product = (  props ) => {
                 <h4>Price: ${price}</h4>
                 <p>{stock} Left</p>
                 <p><small>by {seller}</small></p>
-       <button
-       onClick={()=>props.handleAddToCart(props.product)}
-       className="common-btn"><FontAwesomeIcon icon={faCartPlus} /> Add to cart</button>
+       {
+           showAddBtn && <button
+           onClick={()=>props.handleAddToCart(props.product)}
+           className="common-btn"><FontAwesomeIcon icon={faCartPlus} /> Add to cart</button>
+       }
             </div>
         </div>
     );

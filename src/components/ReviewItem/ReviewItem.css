@@ -1,0 +1,9 @@
+.review-item{
+    margin: 50px 10vw;
+    padding: 20px;
+    border: 1px solid orangered;
+    border-radius: 20px;
+}
+.review-item h1 {
+    color: blue;
+}
