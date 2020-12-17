@@ -1,9 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import './Cart.css'
-const Cart = ({cart}) => {
-const productPrice = cart.reduce((total, pd)=> total + pd.price, 0);
-const productFixedPrice = parseFloat(productPrice.toFixed(2));
+const Cart = (props) => {
+    const{ cart} = props
+const productPrice = cart.reduce((total, pd)=> total+ pd.price * pd.quantity, 0);
+const productFixedPrice = parseFloat(productPrice.toFixed(2)) ;
 
 let vatTax = productFixedPrice * .1;
 let totalVatTax = parseFloat(vatTax.toFixed(2));
@@ -24,9 +24,9 @@ const totalPrice = parseFloat(tempTotal.toFixed(2))
            <p>Shipping Price: ${shipping}</p>
            <p>Vat & Tax: ${totalVatTax}</p>
            <h5 style={{color: "orangered"}}>Total Price: ${totalPrice}</h5>
-           
-<Link to="/review"><button className="common-btn">Review Order</button></Link>
-            
+        {
+            props.children
+        }
         </div>
     );
 };
